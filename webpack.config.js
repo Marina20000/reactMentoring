@@ -1,5 +1,7 @@
 const webpack = require("webpack");
 const path = require('path');
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+
 //const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
@@ -12,18 +14,6 @@ module.exports = {
         path: path.join(__dirname, '/dist'),
         filename: "bundle.js",
     },
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                default: false,
-                commons: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: "vendor",
-                    chunks: "all"
-                }
-            }
-        }
-    },
     resolve: {
         extensions: ['.js']
     },
@@ -31,6 +21,26 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         // new ExtractTextPlugin("styles.css")
     ],
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                default: false,
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: "vendor",
+                    chunks: "initial",
+                    minChunks: 2
+                }
+            }
+        },
+        minimizer: [
+            new UglifyJsPlugin({
+              cache: true,
+              parallel: true,
+              sourceMap: true 
+            })
+          ]
+    },
     module: {
         rules: [
             {

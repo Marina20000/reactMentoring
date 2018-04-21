@@ -1,7 +1,7 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import Button from "./Button";
 
-export default class extends React.Component {
+export default class extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,7 +13,7 @@ export default class extends React.Component {
         const state = this.state;
         state.counter++;
         console.log('state', state);
-        return state;//(!state.counter % 10) ? { ...state } : state;
+        return state;
     }
 
     onButtonClick = () => { this.setState(this.incCounter()) }
@@ -21,6 +21,7 @@ export default class extends React.Component {
     render() {
         return (
             <div>
+                <div><strong>Counter value is </strong>{this.state.counter}</div>
                 <Button onButtonClick={this.onButtonClick} />
             </div>
         )
