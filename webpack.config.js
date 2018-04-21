@@ -12,6 +12,18 @@ module.exports = {
         path: path.join(__dirname, '/dist'),
         filename: "bundle.js",
     },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                default: false,
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: "vendor",
+                    chunks: "all"
+                }
+            }
+        }
+    },
     resolve: {
         extensions: ['.js']
     },
@@ -55,7 +67,6 @@ module.exports = {
         compress: true, // enable gzip compression
         historyApiFallback: true, // true for index.html upon 404, object for multiple paths
         hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
-        noInfo: true, // only errors & warns on hot reload
     }
 }
 
