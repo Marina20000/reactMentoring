@@ -52,7 +52,9 @@
   "scripts": {
     "build": "webpack --progress --config webpack.prod.js --mode production",
     "build-no-progress": "webpack",
-    "start": "webpack-dev-server --open ./webpack.dev.js --mode development",
+    "start:dev": "webpack-dev-server --open ./webpack.dev.js",
+    "start:prod": "webpack-dev-server --open ./webpack.prod.js",
+    "start": "node server.js",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:debug": "react-scripts --inspect-brk test --runInBand --env=jsdom"

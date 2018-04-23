@@ -4,19 +4,29 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: {
-        app: './src/index.js'
-    },
+    context: path.join(__dirname, 'src'),
+    mode: "development",
+    devtool: "none",
+    entry: ["./index.js"],
+    output: {
+        publicPath: "/",
+        path: path.join(__dirname, '/dist'),
+        filename: "bundle.js",
+    }
+    ,
+    // entry: {
+    //     app: './src/index.js'
+    // },
     plugins: [
        // new CleanWebpackPlugin(['dist']),
         // new HtmlWebpackPlugin({
         //     title: 'Production'
         // })
     ],
-    output: {
-        filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist')
-    },
+    // output: {
+    //     filename: '[name].bundle.js',
+    //     path: path.resolve(__dirname, 'dist')
+    // },
     module: {
         rules: [
             {
