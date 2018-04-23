@@ -1,32 +1,18 @@
 const path = require('path');
-const webpack = require( "webpack" );
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require("webpack");
 
 module.exports = {
     context: path.join(__dirname, 'src'),
-    mode: "development",
     devtool: "none",
     entry: ["./index.js"],
     output: {
         publicPath: "/",
         path: path.join(__dirname, '/dist'),
         filename: "bundle.js",
-    }
-    ,
-    // entry: {
-    //     app: './src/index.js'
-    // },
-    plugins: [
-       // new CleanWebpackPlugin(['dist']),
-        // new HtmlWebpackPlugin({
-        //     title: 'Production'
-        // })
-    ],
-    // output: {
-    //     filename: '[name].bundle.js',
-    //     path: path.resolve(__dirname, 'dist')
-    // },
+    },
+    resolve: {
+        extensions: ['.js']
+    },
     module: {
         rules: [
             {
@@ -37,13 +23,6 @@ module.exports = {
                 },
                 exclude: [/node_modules/]
             },
-            // {
-            //     test: /\.css$/,
-            //     use:  ['css-hot-loader'].concat(ExtractTextPlugin.extract({
-            //       fallback: "style-loader",
-            //       use: "css-loader"
-            //     }))
-            // }
             {
                 test: /\.html$/,
                 use: [

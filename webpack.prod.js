@@ -10,18 +10,24 @@ module.exports = merge(common, {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         })
-    ]
-    ,
+    ],
     optimization: {
-        splitChunks: {
-            cacheGroups: {
-                default: false,
-                commons: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: "vendor",
-                    chunks: "all"
-                }
-            }
-        }
-    }
+      splitChunks: {
+          cacheGroups: {
+              default: false,
+              commons: {
+                  test: /[\\/]node_modules[\\/]/,
+                  name: "vendor",
+                  chunks: "all"
+              }
+          }
+      },
+      minimizer: [
+        new UglifyJsPlugin({
+          cache: true,
+          parallel: true,
+          sourceMap: true 
+        })
+      ]
+  }
 });
