@@ -1,5 +1,5 @@
 const merge = require('webpack-merge');
-var webpack = require('webpack')
+var webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const common = require('./webpack.common.js');
 
@@ -21,13 +21,6 @@ module.exports = merge(common, {
                   chunks: "all"
               }
           }
-      },
-      minimizer: [
-        new UglifyJsPlugin({
-          cache: true,
-          parallel: true,
-          sourceMap: true 
-        })
-      ]
+      }
   }
 });
