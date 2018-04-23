@@ -7,16 +7,23 @@ export default class extends React.PureComponent {
         this.state = {
             counter: 0,
         }
-    }
+   }
 
     incCounter = () => {
         const state = this.state;
         state.counter++;
-        console.log('state', state);
-        return state;
+        console.log('state', this.state.counter);
+        return state.counter;
     }
 
-    onButtonClick = () => { this.setState(this.incCounter()) }
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.state.counter !== nextProps.counter) {
+          return true;
+        }
+        return false;
+      }
+
+    onButtonClick = () => { this.setState({counter: this.incCounter()}) }
 
     render() {
         return (

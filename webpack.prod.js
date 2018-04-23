@@ -1,19 +1,18 @@
 const merge = require('webpack-merge');
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+var webpack = require('webpack')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const common = require('./webpack.common.js');
+
 
 module.exports = merge(common, {
     plugins: [
-        new UglifyJSPlugin(),
+        new UglifyJSPlugin({ sourceMap: true })
+        ,
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
-        }),
-        new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "[id].css"
-          })
-    ],
+        })
+    ]
+    ,
     optimization: {
         splitChunks: {
             cacheGroups: {
@@ -24,27 +23,6 @@ module.exports = merge(common, {
                     chunks: "all"
                 }
             }
-        },
-        minimizer: [
-            new UglifyJsPlugin({
-              cache: true,
-              parallel: true,
-              sourceMap: true 
-            }),
-            new webpack.optimize.CommonsChunkPlugin({
-                       name: 'common' // Specify the common bundle's name.
-                     })
-          ]
-    },
-      module: {
-        rules: [
-          {
-            test: /\.css$/,
-            use: [
-              MiniCssExtractPlugin.loader,
-              "css-loader"
-            ]
-          }
-        ]
-      }
+        }
+    }
 });
