@@ -1,9 +1,10 @@
 const path = require('path');
 const webpack = require("webpack");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+
 
 module.exports = {
     context: path.join(__dirname, 'src'),
-    devtool: "none",
     entry: ["./index.js"],
     output: {
         publicPath: "/",
@@ -12,6 +13,26 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js']
+    },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                default: false,
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: "vendor",
+                    chunks: "initial",
+                    minChunks: 2
+                }
+            }
+        },
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true
+            })
+        ]
     },
     module: {
         rules: [
@@ -22,6 +43,17 @@ module.exports = {
                     presets: ["stage-2", "react"],
                 },
                 exclude: [/node_modules/]
+            },
+            {
+                test: /\.css$/,
+                loader: 'style-loader'
+            },
+            {
+                test: /\.css$/,
+                loader: 'css-loader',
+                query: {
+                    modules: true
+                }
             },
             {
                 test: /\.html$/,

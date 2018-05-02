@@ -1,0 +1,42 @@
+.movieItem{
+    width:450px;
+    margin:20px;
+}
+
+.movieTitle{
+    font-size:25px;
+    width:250px;
+    height:50px;
+    padding:20px;
+    display: inline-block;
+}
+
+.movieGenre{
+    font-size:20px;
+    width:350px;
+    height:40px;
+    padding: 0px 20px;
+}
+
+.movieYear{
+    font-size:20px;
+    width:100px;
+    height:30px;
+    display: inline-block;
+    border: 2px; 
+    border-style: solid;
+    border-color:black;
+    border-radius:5px;
+    text-align:center;
+}
+
+.movieImage{
+    width:450px;
+    height:610px;
+}
+.containerDescription{
+    width:60%;
+    height:610px;
+    float:right;
+    margin-bottom:50px;
+}

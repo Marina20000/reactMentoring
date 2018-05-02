@@ -2,12 +2,9 @@ const webpack = require("webpack");
 const path = require('path');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
-//const ExtractTextPlugin = require("extract-text-webpack-plugin");
-
 module.exports = {
     context: path.join(__dirname, 'src'),
     mode: "development",
-    devtool: "none",
     entry: ["./index.js"],
     output: {
         publicPath: "/",
@@ -35,11 +32,11 @@ module.exports = {
         },
         minimizer: [
             new UglifyJsPlugin({
-              cache: true,
-              parallel: true,
-              sourceMap: true 
+                cache: true,
+                parallel: true,
+                sourceMap: true
             })
-          ]
+        ]
     },
     module: {
         rules: [
@@ -51,13 +48,17 @@ module.exports = {
                 },
                 exclude: [/node_modules/]
             },
-            // {
-            //     test: /\.css$/,
-            //     use:  ['css-hot-loader'].concat(ExtractTextPlugin.extract({
-            //       fallback: "style-loader",
-            //       use: "css-loader"
-            //     }))
-            // }
+            {
+                test: /\.css$/,
+                loader: 'style-loader'
+            },
+            {
+                test: /\.css$/,
+                loader: 'css-loader',
+                query: {
+                    modules: true
+                }
+            },
             {
                 test: /\.html$/,
                 use: [

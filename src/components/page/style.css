@@ -1,0 +1,13 @@
+.footer{
+    background: black
+}
+.searchResultPanel{
+    height:70px;
+    background:rgb(190, 185, 186);
+}
+.movieImage{
+    width:450px;
+    height:610px;
+    margin-left:4%;
+    margin-bottom:50px;
+}
