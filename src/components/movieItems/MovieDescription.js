@@ -6,14 +6,13 @@ export default class MovieDescription extends PureComponent {
         super(props);
     }
     render() {
-        let description = this.props.description;
-        console.log("description", description)
-        return <React.Fragment>
+        let params = this.props.params;
+         return <React.Fragment>
             <div>
-                <div className={style.movieTitle}>{description.title}</div>
-                <div className={style.movieYear}>{description.year}</div>
+                <div className={style.movieTitle}>{params.title}</div>
+                <div className={style.movieYear}>{params.release_date}</div>
             </div>
-            <div className={style.movieGenre}>{description.genre}</div>
+            <div className={style.movieGenre}>{params.genres}</div>
         </React.Fragment>
     }
 }

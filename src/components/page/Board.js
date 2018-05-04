@@ -1,7 +1,8 @@
 import React from 'react';
-import NoFilmsFound from './../captions/NoFilmsFound';
 import FilmsContainer from './FilmsContainer';
 import SearchResultPanel from './SearchResultPanel';
+import Inscription from './../captions/Inscription';
+import * as style from './style.css';
 
 export default class Board extends React.Component {
     constructor(props) {
@@ -9,12 +10,10 @@ export default class Board extends React.Component {
     }
     render() {
         let searchResult = this.props.searchResult;
-        let imagesPath = this.props.imagesPath;
-        let imagesDescription = this.props.imagesDescription;
         return <div >
-            { searchResult && <NoFilmsFound/> }
-            <SearchResultPanel quantity={ imagesPath.length } showPage2 = {this.props.showPage2}/>
-            <FilmsContainer imagesPath={ imagesPath } imagesDescription={ imagesDescription }/>
+            { searchResult && <Inscription className={style.noFilmsFound} inscription = 'No films found'/> }
+            <SearchResultPanel quantity={ this.props.movies.length } showPage2 = {this.props.showPage2}/>
+            <FilmsContainer  movies = { this.props.movies }/>
         </div>;
     }
 }

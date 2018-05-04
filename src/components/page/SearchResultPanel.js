@@ -1,9 +1,8 @@
 import React, { PureComponent } from 'react';
 import * as style from './style.css';
-import QuantityMovies from './../captions/QuantityMovies';
-import SortBy from './../captions/SortBy';
 import ReliaseDateButton from './../buttons/ReliaseDateButton';
 import RatingButton from './../buttons/RatingButton';
+import Inscription from './../captions/Inscription';
 
 export default class SearchResultPanel extends PureComponent {
     constructor(props) {
@@ -14,11 +13,11 @@ export default class SearchResultPanel extends PureComponent {
         let quantity = this.props.quantity;
         let showPage2 = this.props.showPage2;
         return <React.Fragment>
-            <div className = {style.searchResultPanel}>
-           { !showPage2 &&  <QuantityMovies quantity={quantity}/>}
+            <div className = { style.searchResultPanel }>
+           { !showPage2 &&  <Inscription className = { style.quantityMovies } inscription={ `${quantity} movies found` }/>}
            { !showPage2 &&  <RatingButton/>}
            { !showPage2 &&  <ReliaseDateButton/>}
-           { !showPage2 &&  <SortBy/>}
+           { !showPage2 &&  <Inscription className={ style.sortBy } inscription = 'Sort by'/>}
             </div>
         </React.Fragment>
     }

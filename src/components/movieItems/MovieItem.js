@@ -7,14 +7,13 @@ export default class MovieItem extends React.Component {
     constructor(props) {
         super(props);
     }
-    
+
     render() {
-        let path = this.props.path;
-        let description = this.props.description;
+        let params  = this.props.params;
         return (
             <div className={style.movieItem}>
-            <MovieImage path={path}/>
-                <MovieDescription description={description}/>
+                <MovieImage path={params.poster_path} />
+               <MovieDescription params={this.props.params} /> 
             </div>
         )
     }

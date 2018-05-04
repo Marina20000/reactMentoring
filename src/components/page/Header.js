@@ -1,22 +1,21 @@
 import React from 'react';
-import Netflixroulette from './../captions/Netflixroulette';
-import FindYourMovie from './../captions/FindYourMovie';
-import SearchBy from './../captions/SearchBy';
 import TitleButton from './../buttons/TitleButton';
 import GenreButton from './../buttons/GenreButton';
 import SearchButton from './../buttons/SearchButton';
 import SearchPanel from './../textboxes/SearchPanel';
+import Inscription from './../captions/Inscription';
+import * as style from './style.css';
 
 
 export default class Header extends React.Component {
     render() {
         return (
             <div style={{ height: 500, backgroundImage: `url('\./image.jpg')`, backgroundSize: '100%' }}>
-                <Netflixroulette />
-                <FindYourMovie />
+                <Inscription className={style.netflix} inscription='netflixroulette'/>
+                <Inscription className={style.findYourMovie} inscription='FIND YOUR MOVIE'/>
                 <SearchPanel/>
                 <div>
-                    <SearchBy />
+                <Inscription className={style.searchBy} inscription='SEARCH BY'/>
                     <TitleButton/>
                     <GenreButton/>
                     <SearchButton />
