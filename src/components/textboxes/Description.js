@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import * as style from './style.css';
+import style from './style.css';
 
 export default class Description extends PureComponent{
     constructor(props){

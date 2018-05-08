@@ -2,7 +2,7 @@ import React from 'react';
 import FilmsContainer from './FilmsContainer';
 import SearchResultPanel from './SearchResultPanel';
 import Inscription from './../captions/Inscription';
-import * as style from './style.css';
+import  style from './style.css';
 
 export default class Board extends React.Component {
     constructor(props) {
@@ -11,8 +11,8 @@ export default class Board extends React.Component {
     render() {
         let searchResult = this.props.searchResult;
         return <div >
-            { searchResult && <Inscription className={style.noFilmsFound} inscription = 'No films found'/> }
-            <SearchResultPanel quantity={ this.props.movies.length } showPage2 = {this.props.showPage2}/>
+            { searchResult && <Inscription className={ style.noFilmsFound } inscription = 'No films found'/> }
+            <SearchResultPanel quantity={!!this.props.movies ? this.props.movies.length :0} showPage2 = {this.props.showPage2}/>
             <FilmsContainer  movies = { this.props.movies }/>
         </div>;
     }

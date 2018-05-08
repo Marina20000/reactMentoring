@@ -10,7 +10,7 @@ export default class FilmsContainer extends React.Component {
 
   render() {
     let images = [];
-    let movies = this.props.movies;
+    let movies = !!this.props.movies?this.props.movies:[];
     movies.forEach(index => {
       images.push(<MovieItem params={index} key={index.id} />)
     })

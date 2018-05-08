@@ -1,1 +1,2 @@
-jest.mock("../../src/styles.less", () => jest.fn());
+//jest.mock("../../src/styles.less", () => jest.fn());
+//module.exports = {};

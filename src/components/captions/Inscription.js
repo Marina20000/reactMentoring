@@ -1,4 +1,4 @@
-import React, {PureComponent} from "react";
+import React, {PureComponent} from 'react';
 
 export default class Inscription extends PureComponent{
     constructor(props){

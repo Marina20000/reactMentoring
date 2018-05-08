@@ -1,5 +1,5 @@
 import React from "react";
-import * as style from './style.css';
+import  style from './style.css';
 
 export default class GenreButton extends React.Component {
     constructor(props) {
@@ -13,7 +13,7 @@ export default class GenreButton extends React.Component {
         this.setState({ active: !currentState});
     };
     render() {
-        return (
+        return (            
             <button onClick={this.toggleButton} className={this.state.active ? style.selected : style.noneSelected}>
                 GENRE
             </button>

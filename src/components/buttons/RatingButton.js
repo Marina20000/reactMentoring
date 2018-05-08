@@ -1,5 +1,5 @@
 import React from 'react';
-import * as style from './style.css';
+import  style from './style.css';
 
 export default class RatingButton extends React.Component {
     constructor(props) {

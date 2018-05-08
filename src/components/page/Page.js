@@ -5,7 +5,7 @@ import Board from './Board';
 import ResultHeader from './ResultHeader';
 import ErrorBoundary from './ErrorBoundary';
 
-const API = 'http://react-cdp-api.herokuapp.com/movies';
+const API = 'http://react-cdp-api.herokuapp.com/movies?limit=20';
 
 export default class Page extends React.Component {
 
@@ -37,10 +37,10 @@ export default class Page extends React.Component {
         return (
             <div style={{ height: 1000 }}>
                 <ErrorBoundary>
-                    {showPage2 == false ? <Header /> : <ResultHeader movie={movie} />}
+                    { showPage2 == false ? <Header /> : <ResultHeader movie={ movie } />}
                 </ErrorBoundary>
                 <ErrorBoundary>
-                    <Board searchResult={searchResult} showPage2={showPage2} movies = {this.state.movies}/>
+                    <Board searchResult={ searchResult } showPage2={ showPage2 } movies = { this.state.movies }/>
                 </ErrorBoundary>
                 <Footer />
             </div>
