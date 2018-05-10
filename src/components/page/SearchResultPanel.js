@@ -1,8 +1,7 @@
 import React from 'react';
 import style from './style.css';
-import ReliaseDateButton from './../buttons/ReliaseDateButton';
-import RatingButton from './../buttons/RatingButton';
 import Inscription from './../captions/Inscription';
+import CreateButton from './../buttons/CreateButton';
 
 
 export default class SearchResultPanel extends React.Component {
@@ -11,15 +10,15 @@ export default class SearchResultPanel extends React.Component {
     }
 
     render() {
-        let quantity = !!this.props.quantity?this.props.quantity:0;
-        let showPage2 = !!this.props.showPage2?this.props.showPage2:false;
+        let quantity = !!this.props.quantity ? this.props.quantity : 0;
+        let showPage2 = !!this.props.showPage2 ? this.props.showPage2 : false;
         return (
-            <div className = { style.searchResultPanel }>
-                { !showPage2 &&  <Inscription className = { style.quantityMovies } inscription={ `${quantity} movies found` }/>}
-           { !showPage2 &&  <RatingButton/>}
-           { !showPage2 &&  <ReliaseDateButton/>}
-           { !showPage2 &&  <Inscription className={ style.sortBy } inscription = 'Sort by'/>}
-                </div>
+            <div className={style.searchResultPanel}>
+                {!showPage2 && <Inscription className={style.quantityMovies} inscription={`${quantity} movies found`} />}
+                {!showPage2 && <CreateButton onClick={() => { }} className={style.ratingButton} inscription='raiting' />}
+                {!showPage2 && <CreateButton onClick={() => { }} className={style.reliaseDateButton} inscription='reliase date' />}
+                {!showPage2 && <Inscription className={style.sortBy} inscription='Sort by' />}
+            </div>
         )
     }
 }

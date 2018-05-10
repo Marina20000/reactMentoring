@@ -7,7 +7,7 @@ export default class MovieImage extends PureComponent{
     }
 
     render(){
-        let path=this.props.path;
+        let path=!!this.props.path?this.props.path:'';
         return(
             <img src={path} className={style.movieImage}/>
         );

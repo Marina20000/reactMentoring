@@ -6,9 +6,8 @@ border:none;
 border-bottom-width: 2px; 
 border-bottom-style: solid;
 border-bottom-color:rgb(223, 46, 84);
-padding: 10px;
-margin-left:10%;
-width:80%;
+padding: 10px 0px;
+width:100%;
 }
 .description{
     width:80%;

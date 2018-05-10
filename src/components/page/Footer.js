@@ -7,7 +7,7 @@ export default class Footer extends React.Component {
     render() {
         return <div style={{ height: 100, backgroundColor: 'black', bottom: 0 }}>
             <Inscription className={ style.netflix } inscription='netflixroulette'/>
-        </div>;
+       </div>;
     }
 
 }

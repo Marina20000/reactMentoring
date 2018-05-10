@@ -30,7 +30,7 @@ export default class Page extends React.Component {
     // }
 
     render() {
-        let searchResult = false;
+        let searchResult = this.state.movies==0;
         let showPage2 = false;
         let movie = [];
         if( !!this.state.movies[0]){ movie=this.state.movies[0] };
