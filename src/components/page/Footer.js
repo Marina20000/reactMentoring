@@ -1,6 +1,6 @@
 import React from 'react';
 import Inscription from './../captions/Inscription';
-import  style from './style.css';
+import style from './style.css';
 
 export default class Footer extends React.Component {
 

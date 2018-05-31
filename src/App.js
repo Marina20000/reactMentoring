@@ -1,28 +1,17 @@
 import React from "react";
 import Page from "./components/page/Page";
+import { render } from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
 export default class App extends React.Component {
 
     render() {
+        const {store} = this.props;
         return (
-            <Page/>
+            <Provider store={store}>
+                <Page />
+            </Provider>
         )
     }
 }
-
-// import Header from "./Header";
-// import { createButton } from "./Buttons/FunctionalButton";
-// import ButtonForm from './Buttons/ButtonForm';
-
-// export default class App extends React.Component {
-
-//     render() {
-//         return (
-//             <div>
-//                 <Header />
-//                 <ButtonForm/>
-//                 {createButton("AAA")}
-//             </div>
-//         )
-//     }
-// }

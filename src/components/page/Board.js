@@ -10,9 +10,9 @@ export default class Board extends React.Component {
     }
     render() {
         let searchResult = this.props.searchResult;
-        return <div >
+         return <div >
             { searchResult && <Inscription className={ style.noFilmsFound } inscription = 'No films found'/> }
-            <SearchResultPanel quantity={!!this.props.movies ? this.props.movies.length :0} showPage2 = {this.props.showPage2}/>
+            <SearchResultPanel quantity={ !!this.props.movies ? this.props.movies.length : 0 } showPage2 = { this.props.showPage2 }/>
             <FilmsContainer  movies = { this.props.movies }/>
         </div>;
     }

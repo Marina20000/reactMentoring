@@ -83,7 +83,7 @@
   background: white;
   font-size: 25px;
 }
-.reliaseDateButton{
+.reliaseDateButtonNoneSelected{
   color: black;
   font-size:20px;
   float:right;
@@ -91,10 +91,31 @@
   margin: 20px;
   border: none;
   background: none;
+} 
+
+.reliaseDateButtonSelected{
+  color:rgb(223, 46, 84);
+  font-size:20px;
+  float:right;
+  padding: 5px 20px;
+  margin: 20px;
+  border: none;
+  background: none;
 }
-.ratingButton{
+.ratingButtonNoneSelected{
   float:right;
   color:rgb(223, 46, 84);
+  padding: 5px 20px;
+  margin: 20px;
+  margin-right:5%;
+  font-size:20px;
+  border: none;
+  background: none;
+}
+
+.ratingButtonSelected{
+  float:right;
+  color: black;
   padding: 5px 20px;
   margin: 20px;
   margin-right:5%;

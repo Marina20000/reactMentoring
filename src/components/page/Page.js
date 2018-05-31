@@ -4,10 +4,11 @@ import Footer from './Footer';
 import Board from './Board';
 import ResultHeader from './ResultHeader';
 import ErrorBoundary from './ErrorBoundary';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as actions from './../../actions/action';
 
-const API = 'http://react-cdp-api.herokuapp.com/movies?limit=20';
-
-export default class Page extends React.Component {
+class Page extends React.Component {
 
     constructor(props){
         super(props);
@@ -16,34 +17,39 @@ export default class Page extends React.Component {
           };
     }
 
-    componentDidMount(){
-        fetch(API).then(response => response.json())
-       .then(data => {
-           this.setState({ movies: data.data})});
-    }
-
-    // eliminateMovie = (t, imagesDescription, imagesPath) => {
-    //     let item = imagesDescription.findIndex(item => item.title === t);
-    //     imagesDescription.splice(item, 1);
-    //     imagesPath.splice(item, 1);
-    //     return imagesDescription;
-    // }
+     componentDidMount(){
+        this.props.actions.getData();
+     }
 
     render() {
-        let searchResult = this.state.movies==0;
+        let searchResult = this.props.data==0;
         let showPage2 = false;
-        let movie = [];
-        if( !!this.state.movies[0]){ movie=this.state.movies[0] };
+        let movie = {};
+        if( !!this.props.data[0]){ movie=this.props.data[0] };
         return (
             <div style={{ height: 1000 }}>
                 <ErrorBoundary>
                     { showPage2 == false ? <Header /> : <ResultHeader movie={ movie } />}
                 </ErrorBoundary>
                 <ErrorBoundary>
-                    <Board searchResult={ searchResult } showPage2={ showPage2 } movies = { this.state.movies }/>
+                    <Board searchResult={ searchResult } showPage2={ showPage2 } movies = { this.props.data }/>
                 </ErrorBoundary>
                 <Footer />
             </div>
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+      data: state.default.data
+    }
+  }
+  
+  function mapDispatchToProps(dispatch) {
+    return {
+      actions: bindActionCreators(actions, dispatch)
+    }
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Page);
