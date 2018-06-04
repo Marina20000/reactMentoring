@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResultHeader testing with snapshot 1`] = `
+<div
+  style={
+    Object {
+      "backgroundImage": "url('./image.jpg')",
+      "backgroundSize": "100%",
+    }
+  }
+>
+  <div
+    className="container"
+  >
+    <div
+      className="netflix"
+    >
+      netflixroulette
+    </div>
+    <button
+      className="returnButton"
+      onClick={[Function]}
+    >
+      SEARCH
+    </button>
+    <img
+      className="movieImage"
+      src={undefined}
+    />
+    <div
+      className="containerDescription"
+    >
+      <div
+        className="movieTitle"
+      />
+      <div
+        className="movieYear"
+      />
+      <div
+        className="movieYear"
+      >
+        undefined  min
+      </div>
+      <div
+        className="description"
+      />
+    </div>
+  </div>
+</div>
+`;

@@ -1,4 +1,4 @@
-export default function page(state = { data: [] }, action) {
+export default function getFilms(state = { data: [] }, action) {
   switch (action.type) {
     case 'GET_DATA': {
       return { ...state, data: action.data };
@@ -6,6 +6,5 @@ export default function page(state = { data: [] }, action) {
     default:
       return state;
   }
-
 }
 

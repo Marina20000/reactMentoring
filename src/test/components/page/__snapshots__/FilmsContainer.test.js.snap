@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmsContainer  testing with snapshot 1`] = `
+<div
+  className="sc-bdVaJa ewctWx"
+>
+  <header
+    className="sc-bdVaJa enORLM"
+  />
+  <div
+    className="sc-bdVaJa dDiHWc"
+  />
+  <footer
+    className="sc-bdVaJa enORLM"
+  />
+</div>
+`;

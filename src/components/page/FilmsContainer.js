@@ -14,7 +14,7 @@ export default class FilmsContainer extends React.Component {
     movies.forEach(index => {
       images.push(<MovieItem params={index} key={index.id} />)
     })
-    return (<Flexbox flexDirection="column" minHeight="100vh">
+    return (<Flexbox flexDirection="column" minHeight="100vh" width = "100%">
       <Flexbox element="header" height="60px">
       </Flexbox>
       <Flexbox flexGrow={1} flexWrap={'wrap'} justifyContent={'center'}>

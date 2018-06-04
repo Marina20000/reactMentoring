@@ -6,15 +6,19 @@ import style from './style.css';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from './../../actions/action';
+import SearchResultPanel from './SearchResultPanel';
 
 
-class Header extends React.Component {
+export class Header extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
             title: true,
-            genre: false
+            genre: false,
+            value: '',
+            releaseDate: true,
+            raiting: false
         };
     }
 
@@ -24,8 +28,21 @@ class Header extends React.Component {
 
     searchFilms = () => {
         let filter = this.state.title ? 'title':'genre';
-        this.props.actions.filterByDataOrGenre(filter);
+        let sorting =this.state.releaseDate ? 'release_date':'raiting';
+        this.props.actions.getData(this.request(filter,sorting));
     }
+
+    request = (filter,sorting) => {
+        return 'limit=20&search='+this.state.value+'&searchBy='+filter+'&sortBy='+sorting+'&sortOrder=desc';
+    }
+
+    handleChange = e => {
+        this.setState({ value: e.target.value });
+    }
+
+    toggleSortings = () => {
+        this.setState({ releaseDate: !this.state.releaseDate, raiting: !this.state.raiting });
+    };
 
     render() {
         return (
@@ -33,7 +50,7 @@ class Header extends React.Component {
                 <div className={style.container}>
                     <Inscription className={style.netflix} inscription='netflixroulette' />
                     <Inscription className={style.findYourMovie} inscription='FIND YOUR MOVIE' />
-                    <SearchPanel />
+                    <SearchPanel onChange={this.handleChange} value={this.state.value}/>
                     <div style={{ width: '100%' }}>
                         <Inscription className={style.searchBy} inscription='SEARCH BY' />
                         <CreateButton onClick={() => { this.toggleButton('title') }} className={this.state.title ? style.selected : style.noneSelected} inscription='TITLE' />
@@ -41,6 +58,8 @@ class Header extends React.Component {
                         <CreateButton onClick={() => { this.searchFilms() }} className={style.searchButton} inscription='SEARCH' />
                     </div>
                 </div>
+                <SearchResultPanel quantity={ !!this.props.movies ? this.props.movies.length : 0 } showPage2 = { this.props.showPage2 } toggleSortings={this.toggleSortings}
+                raiting = { this.state.raiting } releaseDate = { this.state.releaseDate }/>
             </div>
         )
     }
@@ -48,7 +67,7 @@ class Header extends React.Component {
 
 function mapStateToProps(state) {
     return {
-      film: state.default.film
+      film: state.clickFilm.film,
     }
   }
   

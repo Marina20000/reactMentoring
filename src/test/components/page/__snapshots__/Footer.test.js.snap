@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer testing with snapshot 1`] = `
+<div
+  style={
+    Object {
+      "backgroundColor": "black",
+      "bottom": 0,
+      "height": 100,
+    }
+  }
+>
+  <div
+    className="netflix"
+  >
+    netflixroulette
+  </div>
+</div>
+`;

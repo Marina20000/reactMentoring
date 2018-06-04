@@ -7,16 +7,7 @@ import CreateButton from './../buttons/CreateButton';
 export default class SearchResultPanel extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            releaseDate: true,
-            raiting: false
-        };
     }
-
-    toggleButton = () => {
-        this.setState({ releaseDate: !this.state.releaseDate, raiting: !this.state.raiting });
-       // this.props.actions.filterByDataOrGenre(filter)
-    };
 
     render() {
         let quantity = !!this.props.quantity ? this.props.quantity : 0;
@@ -24,8 +15,8 @@ export default class SearchResultPanel extends React.Component {
         return (
             <div className={style.searchResultPanel}>
                 {!showPage2 && <Inscription className={style.quantityMovies} inscription={`${quantity} movies found`} />}
-                {!showPage2 && <CreateButton onClick={() => { this.toggleButton() }} className={this.state.raiting ? style.ratingButtonSelected : style.ratingButtonNoneSelected } inscription='raiting' />}
-                {!showPage2 && <CreateButton onClick={() => { this.toggleButton() }} className={this.state.releaseDate ? style.reliaseDateButtonNoneSelected : style.reliaseDateButtonSelected} inscription='reliase date' />}
+                {!showPage2 && <CreateButton onClick={() => { this.props.toggleSortings() }} className={this.props.raiting ? style.ratingButtonSelected : style.ratingButtonNoneSelected } inscription='raiting' />}
+                {!showPage2 && <CreateButton onClick={() => { this.props.toggleSortings() }} className={this.props.releaseDate ? style.reliaseDateButtonNoneSelected : style.reliaseDateButtonSelected} inscription='reliase date' />}
                 {!showPage2 && <Inscription className={style.sortBy} inscription='Sort by' />}
             </div>
         )

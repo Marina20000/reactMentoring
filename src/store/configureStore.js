@@ -18,21 +18,6 @@ const logger = store => next => action => {
   }
   
    // Sends crash reports as state is updated and listeners are notified.
-  
-  const crashReporter = store => next => action => {
-    try {
-      return next(action)
-    } catch (err) {
-      console.error('Caught an exception!', err)
-      Raven.captureException(err, {
-        extra: {
-          action,
-          state: store.getState()
-        }
-      })
-      throw err
-    }
-  }
 
   // const promiseExtractMiddleware = store => next => action => {
   //   if (action.type !== "PROMISE_EXTRACT") {
@@ -62,7 +47,7 @@ const logger = store => next => action => {
   // }
 
 export default function configureStore(initialState) {
-    const store = createStore(rootReducer, initialState, applyMiddleware(thunk,logger,crashReporter
+    const store = createStore(rootReducer, initialState, applyMiddleware(thunk,logger
      // , promiseExtractMiddleware
     ));
     return store;

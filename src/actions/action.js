@@ -1,28 +1,45 @@
 const API = 'http://react-cdp-api.herokuapp.com/movies';
 
-export const getData = () => dispatch => {
-    fetch(API).then(response => response.json())
-       .then(response => dispatch(afterGetData(response)))
-      .catch(function(error){console.log("ERROR")})
+export const getData = (filter) => dispatch => {
+  let condition = !!filter ? '?' + filter : ''
+  fetch(API + condition).then(response => response.json())
+    .then(response => dispatch(afterGetData(response)))
+    .catch(function (error) { console.log("ERROR=" + error) })
 }
 
 export function afterGetData(response) {
-    return {
-      type: 'GET_DATA',
-      data: response.data
-    }
+  return {
+    type: 'GET_DATA',
+    data: response.data,
   }
-
-export const filterByDataOrGenre = (filter) => dispatch => {
-  fetch(API+'?searchBy='+filter).then(response=>response.json())
-  .then(response => dispatch(afterFilterData(response)
-))
 }
 
-export function afterFilterData(response){
+export const movieClick = id => (dispatch, getState) => {
+  dispatch(afterFilmClicked(getFilmByID(id, getState)));
+  dispatch(afterChangePage());
+}
+
+export function afterFilmClicked(film){
+  return{
+    type: 'AFTER_FILM_CLICKED',
+    film
+  }
+}
+
+const getFilmByID = (id, getState) => {
+  console.log("getState",getState())
+  let movies = !!getState().getFilms?getState().getFilms.data:undefined;
+  let film =!!movies? movies.filter(item => item.id==id):undefined
+  return !!film ? film[0] : {};
+}
+
+export const changePage = () => dispatch => {
+  dispatch(afterChangePage());
+}
+
+export function afterChangePage(){
   return {
-    type: 'GET_FILTER_BY_DATA_OR_GENRE',
-    film:response
+    type: 'CHANGE_PAGE'
   }
 }
 

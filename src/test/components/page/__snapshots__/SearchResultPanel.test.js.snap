@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchResultPanel testing with snapshot 1`] = `
+<div
+  className="searchResultPanel"
+>
+  <div
+    className="quantityMovies"
+  >
+    0 movies found
+  </div>
+  <button
+    className="ratingButtonNoneSelected"
+    onClick={[Function]}
+  >
+    raiting
+  </button>
+  <button
+    className="reliaseDateButtonSelected"
+    onClick={[Function]}
+  >
+    reliase date
+  </button>
+  <div
+    className="sortBy"
+  >
+    Sort by
+  </div>
+</div>
+`;

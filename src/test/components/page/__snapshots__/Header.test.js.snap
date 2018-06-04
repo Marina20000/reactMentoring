@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header testing with snapshot 1`] = `
+<div
+  style={
+    Object {
+      "backgroundImage": "url('./image.jpg')",
+      "backgroundSize": "100%",
+      "height": 500,
+    }
+  }
+>
+  <div
+    className="container"
+  >
+    <div
+      className="netflix"
+    >
+      netflixroulette
+    </div>
+    <div
+      className="findYourMovie"
+    >
+      FIND YOUR MOVIE
+    </div>
+    <input
+      className="searchPanel"
+      onChange={[Function]}
+      type="text"
+    />
+    <div
+      style={
+        Object {
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        className="searchBy"
+      >
+        SEARCH BY
+      </div>
+      <button
+        className="selected"
+        onClick={[Function]}
+      >
+        TITLE
+      </button>
+      <button
+        className="noneSelected"
+        onClick={[Function]}
+      >
+        GENRE
+      </button>
+      <button
+        className="searchButton"
+        onClick={[Function]}
+      >
+        SEARCH
+      </button>
+    </div>
+  </div>
+  <div
+    className="searchResultPanel"
+  >
+    <div
+      className="quantityMovies"
+    >
+      0 movies found
+    </div>
+    <button
+      className="ratingButtonNoneSelected"
+      onClick={[Function]}
+    >
+      raiting
+    </button>
+    <button
+      className="reliaseDateButtonNoneSelected"
+      onClick={[Function]}
+    >
+      reliase date
+    </button>
+    <div
+      className="sortBy"
+    >
+      Sort by
+    </div>
+  </div>
+</div>
+`;

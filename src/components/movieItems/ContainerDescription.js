@@ -11,10 +11,10 @@ export default class ContainerDescription extends PureComponent {
     render() {
         return (
             <div className={style.containerDescription}>
-                <Inscription className={style.movieTitle} inscription={!!this.props.movie?this.props.movie.title:''} />
-                <Inscription className={style.movieYear} inscription={!!this.props.movie?this.props.movie.release_date:''} />
-                <Inscription className={style.movieYear} inscription={!!this.props.movie?this.props.movie.duration:''} />
-                <Description description={!!this.props.movie?this.props.movie.overview:''} />
+                <Inscription className={style.movieTitle} inscription={!!this.props.film?this.props.film.title:''} />
+                <Inscription className={style.movieYear} inscription={!!this.props.film?this.props.film.release_date:''} />
+                <Inscription className={style.movieYear} inscription={!!this.props.film?this.props.film.runtime+'  min':''} />
+                <Description description={!!this.props.film?this.props.film.overview:''} />
             </div>
         )
     }
