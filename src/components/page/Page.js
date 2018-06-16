@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header';
+import EmptyContainerFilm from './EmptyContainerFilm';
 import Footer from './Footer';
 import Board from './Board';
 import ResultHeader from './ResultHeader';
@@ -18,20 +18,15 @@ export class Page extends React.Component {
         };
     }
 
-    componentDidMount() {
-        this.props.actions.getData();
-    }
-
     render() {
         let searchResult = this.props.data == 0;
-        let showPage2 = this.props.changePage;
         return (
-            <div style={{ height: 1000 }}>
+            <div style={{ height: 1000 }} >
                 <ErrorBoundary>
-                    {showPage2 == false ? <Header movies={this.props.data} /> : <ResultHeader film={this.props.film} />}
+                    {this.props.children}
                 </ErrorBoundary>
                 <ErrorBoundary>
-                    <Board searchResult={searchResult} showPage2={showPage2} movies={this.props.data} />
+                {this.props.data.length ? <Board searchResult={searchResult} movies={this.props.data} />  : <EmptyContainerFilm />}                
                 </ErrorBoundary>
                 <Footer />
             </div>
@@ -41,9 +36,7 @@ export class Page extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        data: state.getFilms.data,
-        film: state.clickFilm.film,
-        changePage: state.changePage.showPage2
+        data: state.app.getFilms.data,
     }
 }
 

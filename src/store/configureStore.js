@@ -1,8 +1,8 @@
-import { createStore, applyMiddleware } from 'redux';
-//const {} createStore } = Redux;
-//var createStore = Redux.createStore;
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import rootReducer from './../rootReducer';
 import thunk from 'redux-thunk';
+import { hashHistory } from 'react-router';
+import { routerMiddleware, routerReducer } from 'react-router-redux';
 
 
 /**
@@ -16,38 +16,14 @@ const logger = store => next => action => {
     console.groupEnd()
     return result
   }
+
+  const reducer = combineReducers({
+      routing: routerReducer,
+      app: rootReducer
+  })
   
-   // Sends crash reports as state is updated and listeners are notified.
-
-  // const promiseExtractMiddleware = store => next => action => {
-  //   if (action.type !== "PROMISE_EXTRACT") {
-  //     return next(action)
-  //   }
-
-  //   const {
-  //     data,
-  //     types: [eventStart, eventSuccess, eventFallback],
-  //   } = action.payload;
-
-  //   store.dispatch({
-  //     type: eventStart
-  //   })
-
-  //   data.then((response) => {
-  //     store.dispatch({
-  //       type: eventSuccess,
-  //       payload: response
-  //     })
-  //   }, (error) => {
-  //     store.dispatch({
-  //       type: eventFallback,
-  //       payload: error
-  //     })
-  //   })
-  // }
-
 export default function configureStore(initialState) {
-    const store = createStore(rootReducer, initialState, applyMiddleware(thunk,logger
+    const store = createStore(reducer, initialState, applyMiddleware(thunk,logger,routerMiddleware(hashHistory)
      // , promiseExtractMiddleware
     ));
     return store;

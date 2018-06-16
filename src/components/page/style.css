@@ -123,3 +123,6 @@
   border: none;
   background: none;
 }
+.emptyResult{
+  font-size: 100px;
+}

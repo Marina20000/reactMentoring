@@ -5,6 +5,8 @@ import MovieImage from './MovieImage';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from './../../actions/action';
+import { push } from 'react-router-redux';
+import PropTypes from 'prop-types';
 
 export class MovieItem extends React.Component {
     constructor(props) {
@@ -12,7 +14,7 @@ export class MovieItem extends React.Component {
     }
 
     movieClick = () =>{
-        this.props.actions.movieClick(this.props.params.id);
+        this.props.dispatch(push("/film/"+this.props.params.id));
     }
 
     render() {
@@ -26,14 +28,24 @@ export class MovieItem extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
+MovieItem.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    router: PropTypes.shape({
+        location: PropTypes.shape({
+            pathname: PropTypes.string
+        })
+    })
+};
+
+const mapStateToProps = state => {
     return { }
-  }
+}
   
-  function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => {
     return {
-      actions: bindActionCreators(actions, dispatch)
+      actions: bindActionCreators(actions, dispatch),
+      dispatch
     }
-  }
+}
   
-  export default connect(mapStateToProps, mapDispatchToProps)(MovieItem);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieItem);

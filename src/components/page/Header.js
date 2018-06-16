@@ -67,7 +67,7 @@ export class Header extends React.Component {
 
 function mapStateToProps(state) {
     return {
-      film: state.clickFilm.film,
+        movies: state.app.getFilms.data,
     }
   }
   
